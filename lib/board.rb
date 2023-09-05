@@ -9,7 +9,7 @@
         @grid = Array.new(n){Array.new(n)}
         @size = n * n 
         @pairs = []
-        @revealed = 0
+        # @revealed = 0
     end
 
     def revealed
@@ -28,6 +28,7 @@
     end
 
     def populate
+        make_pairs
         @pairs.each do |card|
             possible = true
             while possible
@@ -51,7 +52,7 @@
         end
     end
 
-    def render
+    def cheat
         @grid.each do |row|
             array = []
             row.each do |card|
@@ -70,10 +71,26 @@
         self[pos].reveal
     end
 
+    def render 
+        @grid.each do |row|
+            array = []
+            row.each do |card|
+                if card.face_up == true 
+                    # p card.face_value
+                    array << card.face_value
+                else
+                    array << "_"
+                end
+            end
+            p array.join(" ")
+        end
+    end
+
 end
 
-b = Board.new(4)
-b.make_pairs
-b.populate 
-b.print
-b.render
+# b = Board.new(4)
+# b.make_pairs
+# b.populate 
+# b.print
+# b.render
+# b.cheat
