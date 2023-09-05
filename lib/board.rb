@@ -21,11 +21,11 @@
         @grid[pos[0]][pos[1]]
     end
 
-    def print
-        @grid.each do |arr|
-            p arr
-        end
-    end
+    # def print
+    #     @grid.each do |arr|
+    #         p arr
+    #     end
+    # end
 
     def populate
         make_pairs
@@ -79,10 +79,10 @@
                     # p card.face_value
                     array << card.face_value
                 else
-                    array << "_"
+                    array << " "
                 end
             end
-            p array.join(" ")
+            puts array.join(" ")
         end
     end
 

@@ -17,7 +17,6 @@ class Game
     end
 
     def play
-        @board.populate
         @board.render
         puts
 
@@ -43,6 +42,10 @@ class Game
     end
 
     def win?
-        @board.revealed == @board.size
+        if @board.revealed == @board.size
+            p 'Victory!'
+            return true
+        end
+        false
     end
 end
