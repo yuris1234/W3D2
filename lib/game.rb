@@ -33,6 +33,7 @@ class Game
             @board[pos1].hide 
             @board[pos2].hide
         end
+
     end
 
     def make_a_guess(pos)
@@ -41,12 +42,7 @@ class Game
         puts
     end
 
-    # def is_checking?
-    #     return true if @board.revealed.odd?
-    #     false
-    # end
+    def win?
+        @board.revealed == @board.size
+    end
 end
-
-g = Game.new(4)
-
-g.play

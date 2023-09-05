@@ -2,7 +2,7 @@
  
  class Board
 
-    attr_reader :pairs
+    attr_reader :size
 
     def initialize(n)
         raise if n.odd?
@@ -13,7 +13,7 @@
     end
 
     def revealed
-        flattened = @grid.flattened 
+        flattened = @grid.flatten 
         flattened.count { |card| card.face_up == true }
     end
 
