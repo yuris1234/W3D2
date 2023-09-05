@@ -9,6 +9,16 @@
         @grid = Array.new(n){Array.new(n)}
         @size = n * n 
         @pairs = []
+        @revealed = 0
+    end
+
+    def revealed
+        flattened = @grid.flattened 
+        flattened.count { |card| card.face_up == true }
+    end
+
+    def [](pos)
+        @grid[pos[0]][pos[1]]
     end
 
     def print
@@ -41,7 +51,7 @@
         end
     end
 
-    def cheat 
+    def render
         @grid.each do |row|
             array = []
             row.each do |card|
@@ -51,10 +61,19 @@
         end
     end
 
+    def won?
+        flattened = @grid.flatten
+        flattened.all?{ |card| card.face_up == true }
+    end
+
+    def reveal(pos)
+        self[pos].reveal
+    end
+
 end
 
 b = Board.new(4)
 b.make_pairs
 b.populate 
 b.print
-b.cheat
+b.render
